@@ -9,7 +9,6 @@ sub assuming_dbman_connection {
     my %params = @_;
     my %conninfo = %{$params{conninfo} // {}};
     my $test = $params{test};
-    my $num_to_skip = $params{skip} // 1;
     my $dbman = Odoo::Database::Manager->new(%conninfo);
     SKIP: {
         my $connectfailed;
@@ -21,19 +20,19 @@ sub assuming_dbman_connection {
                 $connectfailed = $_;
             }
         };
-        skip $connectfailed->msg, $num_to_skip if $connectfailed;
-        $test->($dbman);
+        skip $connectfailed->msg, 1 if $connectfailed;
+        subtest 'connected to server' => sub {
+            $test->($dbman);
+        };
     }
 }
 
 
-assuming_dbman_connection(skip => 1, test => sub {
+assuming_dbman_connection(test => sub {
     my ($dbman) = @_;
-    subtest 'connected to server' => sub {
-        my $initial_dbs;
-        lives_ok { $initial_dbs = $dbman->list_databases } 'get list of databases';
-        explain '$initial_dbs = ', $initial_dbs;
-    };
+    my $initial_dbs;
+    lives_ok { $initial_dbs = $dbman->list_databases } 'get list of databases';
+    explain '$initial_dbs = ', $initial_dbs;
 });
 
 done_testing;
