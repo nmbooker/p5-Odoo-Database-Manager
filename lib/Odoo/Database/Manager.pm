@@ -67,7 +67,7 @@ sub list_databases {
             payload => $error,
         });
     }
-    return $result;
+    return @$result;
 }
 
 1;

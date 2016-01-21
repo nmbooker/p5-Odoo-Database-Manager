@@ -30,9 +30,9 @@ sub assuming_dbman_connection {
 
 assuming_dbman_connection(test => sub {
     my ($dbman) = @_;
-    my $initial_dbs;
-    lives_ok { $initial_dbs = $dbman->list_databases } 'get list of databases';
-    explain '$initial_dbs = ', $initial_dbs;
+    my @initial_dbs;
+    lives_ok { @initial_dbs = $dbman->list_databases } 'get list of databases';
+    explain '\@initial_dbs = ', \@initial_dbs;
 });
 
 done_testing;
