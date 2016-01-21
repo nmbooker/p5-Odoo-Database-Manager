@@ -1,0 +1,6 @@
+Revision history for Odoo-Database-Manager
+ 
+{{ $NEXT }}
+
+    - Initial release
+    - list_databases working
