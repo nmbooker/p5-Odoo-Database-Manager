@@ -80,4 +80,14 @@ Odoo::Database::Manager - database management for Odoo
 
 Create and drop Odoo databases from your Perl scripts
 
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2016 Nick Booker
+ 
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+ 
+See http://dev.perl.org/licenses/ for more information.
+
 =cut
