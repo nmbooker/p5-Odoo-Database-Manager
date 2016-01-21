@@ -1,6 +1,7 @@
 use Test::Most;
 use Try::Tiny;
 use Safe::Isa;
+use Carp;
 
 use_ok 'Odoo::Database::Manager';
 
@@ -20,6 +21,7 @@ sub assuming_dbman_connection {
                 $connectfailed = $_;
             }
         };
+        carp "Failed to connect to Odoo server, tests will be skipped" if $connectfailed;
         skip $connectfailed->msg, 1 if $connectfailed;
         subtest 'connected to server' => sub {
             $test->($dbman);
