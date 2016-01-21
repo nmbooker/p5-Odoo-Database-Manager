@@ -80,6 +80,14 @@ Odoo::Database::Manager - database management for Odoo
 
 Create and drop Odoo databases from your Perl scripts
 
+=head1 METHODS
+
+=head2 list_databases
+
+Return list of Odoo databases.
+
+    my @dbs = $dbman->list_databases;
+
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 2016 Nick Booker
