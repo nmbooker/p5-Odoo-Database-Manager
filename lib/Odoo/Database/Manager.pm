@@ -80,6 +80,10 @@ Odoo::Database::Manager - database management for Odoo
 
 Create and drop Odoo databases from your Perl scripts
 
+=head1 STATUS
+
+EXPERIMENTAL
+
 =head1 METHODS
 
 =head2 list_databases
