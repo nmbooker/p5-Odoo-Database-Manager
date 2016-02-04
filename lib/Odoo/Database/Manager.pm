@@ -99,7 +99,7 @@ sub _execute {
 
 =head1 NAME
 
-Odoo::Database::Manager - database management for Odoo
+Odoo::Database::Manager - database management for Odoo (EXPERIMENTAL)
 
 =head1 DESCRIPTION
 
