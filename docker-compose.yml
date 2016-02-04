@@ -3,7 +3,7 @@ odoo:
   ports:
     - "8069:8069"
   links:
-    - db
+    - "db:db"
 
 db:
   image: postgres

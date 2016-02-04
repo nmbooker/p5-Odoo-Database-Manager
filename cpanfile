@@ -13,4 +13,5 @@ on test => sub {
     requires "Pod::Coverage::TrustPod";
     requires "Try::Tiny";
     requires "Safe::Isa";
+    requires "Data::Munge";
 };
