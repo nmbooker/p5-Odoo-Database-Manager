@@ -60,8 +60,8 @@ sub _cvt_params {
 }
 
 sub dropdb {
-    my ($self, %params) = @_;
-    my $dbname = $params{dbname} or die 'must specify dbname';
+    my ($self, $dbname) = @_;
+    die 'must specify $dbname' unless $dbname;
     failure::odoo::nopassword->throw('password not specified')
         unless defined $self->password;
     $self->_execute('/web/database/drop', 'call', [
@@ -134,7 +134,7 @@ Create and drop Odoo databases from your Perl scripts
     $dbman->createdb(dbname => 'foo', lang => 'en_GB', admin_password => 'admin'); 
 
     say "Dropping foo again:";
-    $dbman->dropdb(dbname => 'foo');
+    $dbman->dropdb('foo');
 
 
 =head1 STATUS
@@ -159,7 +159,7 @@ Create a database.  No meaningful return value as yet.
 
 Drop the database.  No meaningful return value as yet.
 
-    $dbman->dropdb(dbname => 'my_db');
+    $dbman->dropdb('my_db');
 
 =head1 COPYRIGHT AND LICENSE
 

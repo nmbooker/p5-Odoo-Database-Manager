@@ -46,7 +46,7 @@ assuming_dbman_connection(conninfo => {password => 'admin'}, test => sub {
     ok( (elem $newdb => [$dbman->list_databases]) => "database $newdb now in database list");
 
     lives_ok {
-        $dbman->dropdb(dbname => $newdb)
+        $dbman->dropdb($newdb)
     } "drop database $newdb";
     ok( (not (elem $newdb => [$dbman->list_databases])) => "database $newdb no longer in database list");
 });
