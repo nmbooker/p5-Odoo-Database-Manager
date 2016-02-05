@@ -57,6 +57,22 @@ sub createdb {
     ]);
 }
 
+sub _cvt_params {
+    my ($self, %params) = @_;
+    return (fields => [ map { { name => $_, value => $params{$_} } } keys(%params) ]);
+}
+
+sub dropdb {
+    my ($self, %params) = @_;
+    my $dbname = $params{dbname} or die 'must specify dbname';
+    failure::odoo::nopassword->throw('password not specified')
+        unless defined $self->password;
+    $self->_execute('/web/database/drop', 'call', [
+        $self->_cvt_params( drop_db => $dbname, drop_pwd => $self->password ),
+    ]);
+    #{"jsonrpc":"2.0","method":"call","params":{"fields":[{"name":"drop_db","value":"another"},{"name":"drop_pwd","value":"wrongpass"}]},"id":692816518}
+}
+
 sub _execute {
     my ($self, $urlpart, $method, @args) = @_;
 

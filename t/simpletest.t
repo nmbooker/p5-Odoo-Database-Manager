@@ -42,8 +42,13 @@ assuming_dbman_connection(conninfo => {password => 'admin'}, test => sub {
         $dbman->createdb(
             dbname => $newdb, lang => 'en_GB',
             admin_password => 'helloworld')
-    } "createdb($newdb)";
+    } "create database $newdb";
     ok( (elem $newdb => [$dbman->list_databases]) => "database $newdb now in database list");
+
+    lives_ok {
+        $dbman->dropdb(dbname => $newdb)
+    } "drop database $newdb";
+    ok( (not (elem $newdb => [$dbman->list_databases])) => "database $newdb no longer in database list");
 });
 
 sub next_test_db {
