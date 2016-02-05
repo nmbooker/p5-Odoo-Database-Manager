@@ -133,6 +133,9 @@ Create and drop Odoo databases from your Perl scripts
     say "Creating new database foo:";
     $dbman->createdb(dbname => 'foo', lang => 'en_GB', admin_password => 'admin'); 
 
+    say "Dropping foo again:";
+    $dbman->dropdb(dbname => 'foo');
+
 
 =head1 STATUS
 
@@ -151,6 +154,12 @@ Return list of Odoo databases.
 Create a database.  No meaningful return value as yet.
 
     $dbman->createdb(dbname => 'my_db', lang => 'en_GB', admin_password => 'password');
+
+=head2 dropdb
+
+Drop the database.  No meaningful return value as yet.
+
+    $dbman->dropdb(dbname => 'my_db');
 
 =head1 COPYRIGHT AND LICENSE
 
