@@ -2,6 +2,11 @@ Revision history for Odoo-Database-Manager
  
 {{ $NEXT }}
 
+0.02      2016-02-05 17:42:29+00:00 Europe/London
+
+    - dropdb now takes database name as positional argument instead of named argument
+    - dropdb now has POD
+
 0.01      2016-02-05 17:32:08+00:00 Europe/London
 
     - Initial release
