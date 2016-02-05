@@ -24,7 +24,7 @@ sub assuming_dbman_connection {
         };
         carp "Failed to connect to Odoo server, tests will be skipped" if $connectfailed;
         skip $connectfailed->msg, 1 if $connectfailed;
-        subtest 'connected to server' => sub {
+        subtest 'assuming connected to server' => sub {
             $test->($dbman);
         };
     }
