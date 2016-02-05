@@ -44,17 +44,14 @@ sub createdb {
     failure::odoo::nopassword->throw('password not specified')
         unless defined $self->password;
     # TODO support demo option
-    my %odooparams = (
+    $self->_execute('/web/database/create', 'call', [$self->_cvt_params(
         super_admin_pwd => $self->password,
         db_name => $dbname,
         db_lang => $lang,
         create_admin_pwd => $admin_password,
         create_confirm_pwd => $admin_password,
-    );
+    )]);
     # {"jsonrpc":"2.0","method":"call","params":{"fields":[{"name":"super_admin_pwd","value":"admin"},{"name":"db_name","value":"another"},{"name":"db_lang","value":"en_GB"},{"name":"create_admin_pwd","value":"password"},{"name":"create_confirm_pwd","value":"password"}]},"id":776199543}
-    $self->_execute('/web/database/create', 'call', [
-        fields => [map { { name => $_, value => $odooparams{$_} } } keys(%odooparams)]
-    ]);
 }
 
 sub _cvt_params {
