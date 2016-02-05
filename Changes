@@ -2,5 +2,9 @@ Revision history for Odoo-Database-Manager
  
 {{ $NEXT }}
 
+0.01      2016-02-05 17:32:08+00:00 Europe/London
+
     - Initial release
     - list_databases working
+    - createdb working
+    - dropdb working
