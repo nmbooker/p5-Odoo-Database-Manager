@@ -1,6 +1,4 @@
 package Odoo::Database::Manager;
-
-# ABSTRACT: database management library for Odoo (EXPERIMENTAL)
 use v5.20;
 use strict;
 use warnings;
@@ -111,6 +109,10 @@ sub _execute {
 }
 
 1;
+
+=head1 NAME
+
+Odoo::Database::Manager - database management for Odoo (EXPERIMENTAL)
 
 =head1 DESCRIPTION
 
